@@ -1,0 +1,51 @@
+#nav-list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    background: #2d3e50;
+    margin: 0;
+    padding: 0;
+}
+
+#nav-list li {
+    padding: 15px 20px;
+}
+
+#nav-list a {
+    text-decoration: none;
+    color: #f0f0f0;
+}
+
+#page-name {
+    flex-grow: 1;
+}
+
+#collapse-btn {
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width: 675px) {
+    #nav-list {
+        font-size: 1.1em;
+        flex-direction: column;
+    }
+
+    #nav-list li {
+        padding: 10px 20px;
+    }
+
+    .collapsible {
+        display: none;
+    }
+
+    .visible {
+        display: block;
+    }
+
+    #collapse-btn {
+        display: block;
+    }
+}

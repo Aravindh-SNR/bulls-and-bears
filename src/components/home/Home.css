@@ -1,0 +1,24 @@
+.instructions-nav {
+    margin-bottom: 20px;
+}
+
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.pagination li {
+    padding: 5px;
+}
+
+button {
+    border-radius: 5px;
+    padding: 5px 10px;
+    background: #f8f9fa;
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+}

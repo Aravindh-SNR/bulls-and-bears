@@ -1,0 +1,41 @@
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr;
+    margin-top: 30px; 
+}
+
+.instruction {
+    padding: 10px 30px;
+    font-size: 1.1em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 2em;
+    letter-spacing: 0.1em;
+    text-align: justify;
+    border-radius: 5px;
+}
+
+a {
+    color: #ea433b;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#examples {
+    line-height: 1.75em;
+}
+
+@media (max-width: 750px) {
+    .grid {
+        grid-template-columns: 1fr 8fr 1fr;
+    }
+
+    .instruction {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 500px) {
+    .grid {
+        grid-template-columns: 0fr 1fr 0fr;
+    }
+}
