@@ -8,11 +8,11 @@ const Play = ({user, setUser}) => {
     // Word entered by user
     const [word, setWord] = useState('');
 
-    // Check if word to find out has been loaded, otherwise display appropriate message
+    // Check if server has finished picking a word for user to play and display a message if it did not
     const [isLoading, setIsLoading] = useState(true);
     const [message, setMessage] = useState('');
 
-    // Check if word entered by user has been validated, otherwise display appropriate message
+    // Check if server has finished validating word entered by user and display a message if it is invalid
     const [isWordLoading, setIsWordLoading] = useState(false);
     const [wordMessage, setWordMessage] = useState('');
 
