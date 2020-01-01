@@ -1,27 +1,68 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './SignIn.css';
+import Loader from '../loader/Loader';
+import Modal from '../modal/Modal';
+
+// Component to display sign-in/register forms and also perform the said actions
 
 const SignIn = (props) => {
-    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [message, setMessage] = useState('');
 
     const {pathname} = props.location;
 
+    // Ensure fields are blank if user switches between sign-in and register forms
+    useEffect(() => {
+        setUsername('');
+        setPassword('');
+        setIsLoading(false);
+    }, [pathname]);
+
+    // Store username and password
     const handleInput = (event) => {
         const value = event.target.value.trim();
-        event.target.id === 'name' ? setName(value) : setPassword(value);
+        event.target.id === 'username' ? setUsername(value) : setPassword(value);
+    };
+
+    // Register or sign in user
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        setIsLoading(true);
+
+        fetch(`http://localhost:8080${pathname}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username, password})
+        })
+        .then(response => {
+            setIsLoading(false);
+            return response.json();
+        })
+        .then(data => {
+            if (data.id) {
+                props.setUser(data);
+                localStorage.setItem('user', JSON.stringify(data));
+                props.history.push('/play');
+            } else {
+                setMessage(data);
+            }
+        })
     };
 
     return (
         <main className='flex'>
             <h1>{pathname === '/signin' ? 'Sign In' : 'Register'}</h1>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <fieldset>
                     <div>
-                        <label htmlFor='name'>Username</label><br/>
-                        <input onChange={handleInput} value={name} id='name' type='text' placeholder='Username' autoComplete='off' autoFocus required />
+                        <label htmlFor='username'>Username</label><br/>
+                        <input onChange={handleInput} value={username} id='username' type='text' placeholder='Username' autoComplete='off' autoFocus required />
                     </div>
 
                     <div>
@@ -40,6 +81,10 @@ const SignIn = (props) => {
                 <p>Don't have an account yet? <Link to='/register'>Register</Link></p> :
                 <p>Have an account already? <Link to='/signin'>Sign In</Link></p>
             }
+
+            { isLoading && <Loader/> }
+
+            { message && <Modal message={message} setMessage={setMessage} /> }
         </main>
     );
 };

@@ -2,23 +2,29 @@ import React, {useEffect} from 'react';
 import './Instruction.css';
 import Typed from 'typed.js';
 
+// Component to display an instruction
+
 const Instruction = ({instruction, setCompleted}) => {
     useEffect(() => {
+
+        // Options for the Typed.js library
         const options = {
             strings: [instruction],
-            typeSpeed: 40,
+            typeSpeed: 45,
             showCursor: false,
             onComplete: () => {
                 setCompleted(true);
             }
         };
 
+        // Scroll window down automatically as window height increases
         const myInterval = window.setInterval(() => {
             window.scrollTo(0, document.body.scrollHeight);
         }, 500);
 
         let height = 0;
 
+        // Stop automatic scrolling if user scrolls up
         const stopScroll = () => {
             if (height > window.scrollY) {
                 clearInterval(myInterval);

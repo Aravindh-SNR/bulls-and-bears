@@ -27,7 +27,7 @@
     display: none;
 }
 
-@media (max-width: 675px) {
+@media (max-width: 700px) {
     #nav-list {
         font-size: 1.1em;
         flex-direction: column;

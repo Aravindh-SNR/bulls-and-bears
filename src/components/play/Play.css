@@ -1,0 +1,57 @@
+.player-info {
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+}
+
+.user-guess {
+    margin: 20px auto 0;
+}
+
+.user-guess fieldset {
+    padding: 0;
+    text-align: justify;
+}
+
+.word, .user-word, .submit-word {
+    margin: 0 10px 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.word, .user-word {
+    letter-spacing: 0.5em;
+}
+
+.word {
+    width: 6em;
+}
+
+.user-word {
+    width: 5.5em;
+}
+
+.submit-word {
+    background: #f8f9fa;
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.count {
+    letter-spacing: 0.1em;
+}
+
+.guess-count {
+    color: #ea433b;
+    font-size: 1.05em;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.word-note {
+    color: grey;
+    letter-spacing: normal;
+    font-size: medium;
+    padding: 0 10px;
+}
