@@ -18,16 +18,23 @@
     border-radius: 5px;
 }
 
+.submit-word {
+    padding-bottom: 6.2px;
+}
+
 .word, .user-word {
     letter-spacing: 0.5em;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 .word {
-    width: 6.25em;
+    width: 5.6em;
 }
 
 .user-word {
-    width: 5.75em;
+    width: 5.1em;
 }
 
 .submit-word {
