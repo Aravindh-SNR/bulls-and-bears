@@ -125,7 +125,7 @@ const Play = ({user, setUser}) => {
             
             <p className='player-info'>
                 Player: {user.username} | Points: {user.points}<br/>
-                <span className='word-note'>Note: I'll think of a different word every time you play.</span>
+                <span className='word-note'>Note: I'll most probably think of a different word every time you play.</span>
             </p>
 
             {
