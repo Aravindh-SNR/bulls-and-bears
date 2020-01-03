@@ -149,16 +149,19 @@ const Play = ({user, setUser}) => {
                 wordMessage &&
                 <Modal message={wordMessage} setMessage={setWordMessage} />
             }
+
+            {
+                isWordLoading &&
+                <Loader/>
+            }
+            
             {
                 words.length > 0 &&
                 <form className='user-guess'>
                         {words}
                 </form>
             }
-            {
-                isWordLoading &&
-                <Loader/>
-            }
+            
         </main>
     );
 };

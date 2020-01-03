@@ -21,7 +21,8 @@ a {
 }
 
 .examples {
-    line-height: 1.75em;
+    line-height: 1.5em;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 @media (max-width: 750px) {
