@@ -23,45 +23,45 @@ const instructions = [
     `<p>
         Let's imagine I think of the word 'WATCH' ^500 and you enter one or more of the following words. ^500 Focus on the number of bulls and bears to understand the game.
     </p>
-    <ul class='examples'>
+    <ul>
         <li>
-            'LEMON' ^1000 - 0 bulls, 0 bears
+            <span class='example-words'>'LEMON'</span> ^1000 - 0 bulls, 0 bears
         </li>
         <li>
-            'CRIME' ^1000 - 0 bulls, 1 bear
+            <span class='example-words'>'CRIME'</span> ^1000 - 0 bulls, 1 bear
         </li>
         <li>
-            'COCKY' ^1000 - 0 bulls, 2 bears ^500 (because there are two C's in 'COCKY' ^500 although 'WATCH' has only one)
+            <span class='example-words'>'COCKY'</span> ^1000 - 0 bulls, 2 bears ^500 (because there are two C's in 'COCKY' ^500 although 'WATCH' has only one)
         </li>
         <li>
-            'CLICK' ^1000 - 1 bull, 1 bear ^500 (the first C in 'CLICK' is a bear and the second is a bull ^500 although 'WATCH' has only one C)
+            <span class='example-words'>'CLICK'</span> ^1000 - 1 bull, 1 bear ^500 (the first C in 'CLICK' is a bear ^500 and the second is a bull ^500 although 'WATCH' has only one C)
         </li>
         <li>
-            'TORCH' ^1000 - 2 bulls, 1 bear
+            <span class='example-words'>'TORCH'</span> ^1000 - 2 bulls, 1 bear
         </li>
         <li>
-            'CATCH' ^1000 - 4 bulls, 1 bear
+            <span class='example-words'>'CATCH'</span> ^1000 - 4 bulls, 1 bear
         </li>
         <li>
-            'WATCH' ^1000 - 5 bulls, 0 bears ^500 but I would simply tell you that you won!
+            <span class='example-words'>'WATCH'</span> ^1000 - 5 bulls, 0 bears ^500 but I would simply tell you that you won!
         </li>
     </ul>`,
 
     `<p>
         Another example just to show you some tricky situations. ^500 Suppose my word is 'AWARE' ^500 and some of your guesses are:
     </p>
-    <ul class='examples'>
+    <ul>
         <li>
-            'CATCH' ^1000 - 0 bulls, 1 bear
+            <span class='example-words'>'CATCH'</span> ^1000 - 0 bulls, 1 bear
         </li>
         <li>
-            'ATTIC' ^1000 - 1 bull, 0 bears
+            <span class='example-words'>'ATTIC'</span> ^1000 - 1 bull, 0 bears
         </li>
         <li>
-            'BANAL' ^1000 - 0 bulls, 2 bears
+            <span class='example-words'>'BANAL'</span> ^1000 - 0 bulls, 2 bears
         </li>
         <li>
-            'AGAIN' ^1000 - 2 bulls, 0 bears
+            <span class='example-words'>'AGAIN'</span> ^1000 - 2 bulls, 0 bears
         </li>
     </ul>
     <p>
