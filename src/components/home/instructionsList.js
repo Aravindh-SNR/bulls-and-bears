@@ -43,7 +43,7 @@ const instructions = [
             <span class='example-words'>'CATCH'</span> ^1000 - 4 bulls, 1 bear
         </li>
         <li>
-            <span class='example-words'>'WATCH'</span> ^1000 - 5 bulls, 0 bears ^500 but I would simply tell you that you won!
+            <span class='example-words'>'WATCH'</span> ^1000 - 5 bulls, 0 bears ^500 which means you win!
         </li>
     </ul>`,
 

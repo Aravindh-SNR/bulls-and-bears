@@ -24,6 +24,8 @@ const Play = ({user, setUser}) => {
     // Flag to ensure new word is loaded if user does not win the current game
     const [flag, setFlag] = useState(false);
 
+    const [gameCompleted, setGameCompleted] = useState(false);
+
     // Load new word every time there's a change in flag or user (more specifically, user.points)
     useEffect(() => {
         setGuessesRemaining(15);
@@ -39,26 +41,31 @@ const Play = ({user, setUser}) => {
     }, [user, flag]);
 
     // Update points if user wins
-    const updatePoints = () => {
+    const updatePoints = (points) => {
         fetch('https://arcane-fortress-76461.herokuapp.com/points', {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({id: user.id, word})
+            body: JSON.stringify({id: user.id, points})
         })
         .then(response => response.json())
         .then(data => {
-            if (isNaN(data)) {
-                setMessage(data);
+            if (data.word) {
+                if (points) {
+                    setMessage('Good one! You get a point. Keep playing!');
+                    setUser({
+                        ...user,
+                        points: Number(user.points) + 1
+                    });
+                    localStorage.setItem('user', JSON.stringify({
+                        ...user,
+                        points: Number(user.points) + 1
+                    }));
+                } else {
+                    setMessage(`My word was '${data.word.toUpperCase()}'. Better luck next time. Keep playing!`);
+                    setFlag(!flag);
+                }
             } else {
-                setMessage('Good one! You get a point. Keep playing!');
-                setUser({
-                    ...user,
-                    points: Number(data)
-                });
-                localStorage.setItem('user', JSON.stringify({
-                    ...user,
-                    points: Number(data)
-                }));
+                setMessage(data);
             }
         });
     };
@@ -70,26 +77,26 @@ const Play = ({user, setUser}) => {
             // Decrement number of guesses for every valid word entered by user
             setGuessesRemaining(guessesRemaining - 1);
 
-            // End game if user wins or has no guesses left, otherwise add word to list of already entered words
+            // Add word to list of already entered words
+            const {bulls, bears} = data;
+            setWords([
+                <fieldset key={words.length}>
+                    <input type='text' readOnly value={word} className='user-word' />
+                    <span className='count'>
+                        - {bulls} {bulls === 1 ? 'bull' : 'bulls'}, {bears} {bears === 1 ? 'bear' : 'bears'}
+                    </span>
+                </fieldset>,
+                ...words,
+            ]);
+
+            // End game if user wins or has no guesses left
             if (data.bulls === 5) {
-                setWords([]);
-                updatePoints();
+                updatePoints(1);
+                setGameCompleted(true);
             } else {
                 if (words.length === 14) {
-                    setWords([]);
-                    setMessage('Uh-oh. Better luck next time. Keep playing!');
-                    setFlag(!flag);
-                } else {
-                    const {bulls, bears} = data;
-                    setWords([
-                        <fieldset key={words.length}>
-                            <input type='text' readOnly value={word} className='user-word' />
-                            <span className='count'>
-                                - {bulls} {bulls === 1 ? 'bull' : 'bulls'}, {bears} {bears === 1 ? 'bear' : 'bears'}
-                            </span>
-                        </fieldset>,
-                        ...words,
-                    ]);
+                    updatePoints(0);
+                    setGameCompleted(true);
                 }
             }
         } else {    
@@ -125,7 +132,7 @@ const Play = ({user, setUser}) => {
             
             <p className='player-info'>
                 Player: {user.username} | Points: {user.points}<br/>
-                <span className='word-note'>Note: I'll most probably think of a different word every time you play.</span>
+                <span className='word-note'>Note: I'll think of a different word every time you play.</span>
             </p>
 
             {
@@ -133,7 +140,7 @@ const Play = ({user, setUser}) => {
                 <Loader/>
                 :
                 message ?
-                <Modal message={message} setMessage={setMessage} />
+                <Modal message={message} setMessage={setMessage} setWords={gameCompleted && setWords} setGameCompleted={gameCompleted && setGameCompleted} />
                 :
                 <Fragment>
                     <form className='play-form' onSubmit={handleSubmit}>

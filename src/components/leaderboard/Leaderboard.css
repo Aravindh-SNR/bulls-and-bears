@@ -25,6 +25,12 @@ thead th {
     }
 }
 
+@media (max-width: 600px) {
+    .pure-table, .pure-table-bordered {
+        width: 95vw;
+    }
+}
+
 /*!
 Pure v1.0.1
 Copyright 2013 Yahoo!

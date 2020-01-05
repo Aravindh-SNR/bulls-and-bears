@@ -3,7 +3,7 @@ import './Modal.css';
 
 // Component for displaying a popup modal with error/information messages
 
-const Modal = ({message, setMessage}) => {
+const Modal = ({message, setMessage, setWords, setGameCompleted}) => {
 
     // Display modal as a block element when the component is rendered
     const [display, setDisplay] = useState('block');
@@ -12,6 +12,10 @@ const Modal = ({message, setMessage}) => {
     const closeModal = () => {
         setDisplay('none');
         setMessage('');
+
+        // Empty out list of words entered by user on completion of game in Play component
+        setWords && setWords([]);
+        setGameCompleted && setGameCompleted(false);
     };
 
     useEffect(() => {    
