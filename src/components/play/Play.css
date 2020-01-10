@@ -1,6 +1,7 @@
 .player-info {
     font-size: 1.2em;
     letter-spacing: 0.1em;
+    padding: 0 5px;
 }
 
 .user-guess {
@@ -60,5 +61,4 @@
     color: grey;
     letter-spacing: normal;
     font-size: medium;
-    padding: 0 10px;
 }
