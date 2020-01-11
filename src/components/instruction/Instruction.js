@@ -10,7 +10,7 @@ const Instruction = ({instruction, setCompleted}) => {
         // Options for the Typed.js library
         const options = {
             strings: [instruction],
-            typeSpeed: 45,
+            typeSpeed: 50,
             showCursor: false,
             onComplete: () => {
                 setCompleted(true);
