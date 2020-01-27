@@ -29,6 +29,11 @@ thead th {
     .pure-table, .pure-table-bordered {
         width: 95vw;
     }
+
+    td {
+        max-width: 10em;
+        word-wrap: break-word;
+    }
 }
 
 /*!
