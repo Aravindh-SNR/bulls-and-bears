@@ -30,7 +30,7 @@ const Play = ({user, setUser}) => {
     useEffect(() => {
         setGuessesRemaining(15);
 
-        fetch(`https://arcane-fortress-76461.herokuapp.com/play/${user.id}`, {
+        fetch(`https://bulls-and-bears-server.herokuapp.com/play/${user.id}`, {
             method: 'GET'
         })
         .then(response => response.json())
@@ -42,7 +42,7 @@ const Play = ({user, setUser}) => {
 
     // Update points if user wins
     const updatePoints = (points) => {
-        fetch('https://arcane-fortress-76461.herokuapp.com/points', {
+        fetch('https://bulls-and-bears-server.herokuapp.com/points', {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({id: user.id, points})
@@ -114,7 +114,7 @@ const Play = ({user, setUser}) => {
         event.preventDefault();
         setIsWordLoading(true);
 
-        fetch('https://arcane-fortress-76461.herokuapp.com/check', {
+        fetch('https://bulls-and-bears-server.herokuapp.com/check', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({id: user.id, word})

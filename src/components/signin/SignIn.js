@@ -34,7 +34,7 @@ const SignIn = (props) => {
 
         setIsLoading(true);
 
-        fetch(`https://arcane-fortress-76461.herokuapp.com${pathname}`, {
+        fetch(`https://bulls-and-bears-server.herokuapp.com${pathname}`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({username, password})

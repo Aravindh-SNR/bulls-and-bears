@@ -10,7 +10,7 @@ const Leaderboard = ({user}) => {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        fetch('https://arcane-fortress-76461.herokuapp.com/leaderboard', {
+        fetch('https://bulls-and-bears-server.herokuapp.com/leaderboard', {
             method: 'GET'
         })
         .then(response => response.json())
